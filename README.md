@@ -1,4 +1,4 @@
-# 🚀 Laboratório 5G Core com Open5GS usando Docker (Passo a passo para iniciantes)
+# 🚀 Laboratório 5G Core com Open5GS usando Docker (Passo a passo)
 <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bb5a4146-3706-497f-9da6-fc708f8f120a" />
 
 
