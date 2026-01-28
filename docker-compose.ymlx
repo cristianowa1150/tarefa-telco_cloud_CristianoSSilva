@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  open5gs:
+   image: gradiant/open5gs:2.7.6
+    container_name: open5gs
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+   environment:
+  DB_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/${MONGO_DB}?authSource=admin"
+  TZ: ${TZ}
+
+    environment:
+      DB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/${MONGO_DB}?authSource=admin
+      TZ: ${TZ}   ports:
+      - "7777:7777"
+      - "9090:9090"
+      - "38412:38412/sctp"
+      - "2152:2152/udp"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7777"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo_data:
