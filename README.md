@@ -1,4 +1,11 @@
-# 🚀 Laboratório 5G Core com Open5GS usando Docker (Passo a passo)
+# Laboratório 5G Core com Open5GS usando Docker (Passo a passo)
+tarefa-telco_cloud_CristianoSSilva/
+├── README.md
+├── docker-compose.yml
+├── .gitignore
+├── start.sh
+└── stop.sh
+
 <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bb5a4146-3706-497f-9da6-fc708f8f120a" />
 
 
